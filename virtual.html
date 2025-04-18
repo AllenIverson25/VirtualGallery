@@ -1,1 +1,251 @@
-<iframe width="1900" height="950" src="https://www.artsteps.com/embed/61af46425eb7b73f85c2dcee/560/315" frameborder="0" allowfullscreen></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistry - Virtual 3D Tour</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="virtual-tour-page">
+    <!-- Advanced Navbar -->
+    <header class="header-area">
+        <div class="navbar-area">
+            <div class="container">
+                <nav class="site-navbar">
+                    <a href="index.html" class="site-logo">Artistry</a>
+                    <ul class="site-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="artists.html">Artists</a></li>
+                        <li><a href="exhibitions.html">Exhibitions</a></li>
+                        <li><a href="virtual.html" class="active">3D Tour</a></li>
+                    </ul>
+                    <button class="nav-toggler">
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Virtual Tour Info -->
+    <div class="virtual-tour-info">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="tour-info-content">
+                        <h1>Immersive 3D Gallery Experience</h1>
+                        <p>Navigate through our virtual gallery spaces using keyboard controls or mouse clicks.</p>
+                        <div class="tour-controls">
+                            <div class="control-item">
+                                <i class="fas fa-arrows-alt"></i>
+                                <span>Arrow Keys: Move around</span>
+                            </div>
+                            <div class="control-item">
+                                <i class="fas fa-mouse-pointer"></i>
+                                <span>Mouse: Look around</span>
+                            </div>
+                            <div class="control-item">
+                                <i class="fas fa-hand-pointer"></i>
+                                <span>Click: Interact with artwork</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary tour-start-btn" id="startTourBtn">
+                            <i class="fas fa-vr-cardboard"></i> Start Tour
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="tour-preview">
+                        <img src="imgs/virtual-tour-preview.jpg" alt="Virtual Tour Preview" class="img-fluid">
+                        <div class="play-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Virtual Tour Frame -->
+    <div class="virtual-tour-frame" id="virtualTourFrame" style="display: none;">
+        <div class="tour-loading">
+            <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Loading Virtual Tour...</p>
+        </div>
+        <iframe width="100%" height="100%" src="https://www.artsteps.com/embed/61af46425eb7b73f85c2dcee/560/315" frameborder="0" allowfullscreen></iframe>
+        <button class="exit-tour-btn" id="exitTourBtn">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="tour-navigation">
+            <button class="nav-btn prev-room" title="Previous Room">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="room-indicator">
+                <span class="current-room">Main Hall</span>
+                <div class="room-dots">
+                    <span class="room-dot active"></span>
+                    <span class="room-dot"></span>
+                    <span class="room-dot"></span>
+                    <span class="room-dot"></span>
+                </div>
+            </div>
+            <button class="nav-btn next-room" title="Next Room">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Tour Gallery Thumbnails -->
+    <section class="tour-thumbnails">
+        <div class="container">
+            <div class="section-header">
+                <h2>Gallery Spaces</h2>
+                <p>Preview the different areas of our virtual gallery</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="thumbnail-item" data-room="main-hall">
+                        <img src="imgs/room-main-hall.jpg" alt="Main Exhibition Hall">
+                        <div class="thumbnail-overlay">
+                            <h3>Main Exhibition Hall</h3>
+                            <p>Featuring masterpieces from different eras</p>
+                            <button class="enter-btn">Enter</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="thumbnail-item" data-room="impressionist">
+                        <img src="imgs/room-impressionist.jpg" alt="Impressionist Wing">
+                        <div class="thumbnail-overlay">
+                            <h3>Impressionist Wing</h3>
+                            <p>Works by Monet, Renoir, and contemporaries</p>
+                            <button class="enter-btn">Enter</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="thumbnail-item" data-room="renaissance">
+                        <img src="imgs/room-renaissance.jpg" alt="Renaissance Collection">
+                        <div class="thumbnail-overlay">
+                            <h3>Renaissance Collection</h3>
+                            <p>Showcasing Da Vinci and other masters</p>
+                            <button class="enter-btn">Enter</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="thumbnail-item" data-room="modern">
+                        <img src="imgs/room-modern.jpg" alt="Modern Art Gallery">
+                        <div class="thumbnail-overlay">
+                            <h3>Modern Art Gallery</h3>
+                            <p>Contemporary expressions and abstractions</p>
+                            <button class="enter-btn">Enter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour Features -->
+    <section class="tour-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h3>Interactive Information</h3>
+                        <p>Click on any artwork to display detailed information about the piece and its creator.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <h3>Audio Commentary</h3>
+                        <p>Listen to expert commentary about selected masterpieces throughout the gallery spaces.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Screenshot & Share</h3>
+                        <p>Capture your favorite views and share them directly to social media from the tour.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget about-widget">
+                        <h4>Artistry</h4>
+                        <p>Immerse yourself in the world of fine art through our curated collections and exhibitions featuring renowned masters and emerging talents.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="artists.html">Artists</a></li>
+                            <li><a href="exhibitions.html">Exhibitions</a></li>
+                            <li><a href="virtual.html">3D Tour</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4>Open Hours</h4>
+                        <ul class="open-hours">
+                            <li><span>Monday - Friday:</span> 10:00 AM - 8:00 PM</li>
+                            <li><span>Saturday & Sunday:</span> 11:00 AM - 6:00 PM</li>
+                            <li><span>Virtual Tour:</span> Available 24/7</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4>Contact Information</h4>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Art Street, Gallery District</li>
+                            <li><i class="fas fa-phone-alt"></i> +1 234 567 8900</li>
+                            <li><i class="fas fa-envelope"></i> info@artistry.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-bar">
+                <p>© 2025 Artistry. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
