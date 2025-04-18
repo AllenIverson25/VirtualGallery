@@ -3,42 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Art Gallery - Gallery</title>
+    <title>Artistry - Gallery Collection</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand text-warning fw-bold" href="index.html">Virtual Art Gallery</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="artists.html">Artists</a></li>
-                </ul>
+<body class="gallery-page">
+    <!-- Advanced Navbar -->
+    <header class="header-area">
+        <div class="navbar-area">
+            <div class="container">
+                <nav class="site-navbar">
+                    <a href="index.html" class="site-logo">Artistry</a>
+                    <ul class="site-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html" class="active">Gallery</a></li>
+                        <li><a href="artists.html">Artists</a></li>
+                        <li><a href="exhibitions.html">Exhibitions</a></li>
+                        <li><a href="virtual.html">3D Tour</a></li>
+                    </ul>
+                    <button class="nav-toggler">
+                        <span></span>
+                    </button>
+                </nav>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <section class="container my-6 position-relative" style="min-height: 80vh;">
-        <h1 class="h1 fw-bold text-center mb-4 text-dark text-shadow">Art Gallery</h1>
-        <div class="mb-3 text-center">
-            <button class="btn btn-outline-dark me-2 shadow-sm" onclick="filterArtworks('all')">Show All</button>
-            <button class="btn btn-outline-dark me-2 shadow-sm" onclick="filterArtworks('Vincent van Gogh')">Van Gogh</button>
-            <button class="btn btn-outline-dark shadow-sm" onclick="filterArtworks('Leonardo da Vinci')">Da Vinci</button>
+    <!-- Page Title -->
+    <div class="page-title-area">
+        <div class="container">
+            <h1>Our Collection</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Gallery
+            </div>
         </div>
-        <div class="row row-cols-1 row-cols-md-4 g-4 position-relative" id="gallery-container" style="perspective: 1000px;">
-            <!-- Artworks will load here -->
+    </div>
+
+    <!-- Gallery Filter and Search -->
+    <section class="gallery-filter-section">
+        <div class="container">
+            <div class="filter-wrapper">
+                <div class="filter-categories">
+                    <button class="filter-btn active" data-filter="all">All Artworks</button>
+                    <button class="filter-btn" data-filter="Vincent van Gogh">Van Gogh</button>
+                    <button class="filter-btn" data-filter="Leonardo da Vinci">Da Vinci</button>
+                    <button class="filter-btn" data-filter="Edvard Munch">Munch</button>
+                    <button class="filter-btn" data-filter="Claude Monet">Monet</button>
+                    <button class="filter-btn" data-filter="Salvador Dali">Dali</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="artSearch" placeholder="Search artwork...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <div class="view-controls">
+                <button class="view-btn grid-view active"><i class="fas fa-th"></i></button>
+                <button class="view-btn list-view"><i class="fas fa-list"></i></button>
+            </div>
         </div>
-        <div id="art-details" class="mt-4 p-4 bg-light rounded shadow-lg position-fixed end-0 bottom-0 w-25 h-50 overflow-auto details-panel" style="display: none; z-index: 1000;"></div>
     </section>
 
+    <!-- Gallery Collection -->
+    <section class="gallery-collection">
+        <div class="container">
+            <div class="row" id="gallery-container">
+                <!-- Gallery items will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Artwork Modal -->
+    <div class="artwork-modal" id="artworkModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="artwork-image">
+                            <img src="" alt="" id="modalArtworkImage">
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="artwork-details">
+                            <h2 id="modalArtworkTitle"></h2>
+                            <div class="artwork-meta">
+                                <p>Artist: <span id="modalArtworkArtist"></span></p>
+                                <p>Year: <span id="modalArtworkYear"></span></p>
+                                <p>Medium: <span id="modalArtworkMedium"></span></p>
+                                <p>Dimensions: <span id="modalArtworkDimensions"></span></p>
+                            </div>
+                            <div class="artwork-description" id="modalArtworkDescription"></div>
+                            <div class="artwork-actions">
+                                <button class="btn-favorite"><i class="far fa-heart"></i> Add to Favorites</button>
+                                <button class="btn-share"><i class="fas fa-share-alt"></i> Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget about-widget">
+                        <h4>Artistry</h4>
+                        <p>Immerse yourself in the world of fine art through our curated collections and exhibitions featuring renowned masters and emerging talents.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="artists.html">Artists</a></li>
+                            <li><a href="exhibitions.html">Exhibitions</a></li>
+                            <li><a href="virtual.html">3D Tour</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4>Open Hours</h4>
+                        <ul class="open-hours">
+                            <li><span>Monday - Friday:</span> 10:00 AM - 8:00 PM</li>
+                            <li><span>Saturday & Sunday:</span> 11:00 AM - 6:00 PM</li>
+                            <li><span>Virtual Tour:</span> Available 24/7</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4>Contact Information</h4>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Art Street, Gallery District</li>
+                            <li><i class="fas fa-phone-alt"></i> +1 234 567 8900</li>
+                            <li><i class="fas fa-envelope"></i> info@artistry.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-bar">
+                <p>© 2025 Artistry. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
