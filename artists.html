@@ -21,10 +21,9 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="artists.html" class="active">Artists</a></li>
-                        <li><a href="exhibitions.html">Exhibitions</a></li>
                         <li><a href="virtual.html">3D Tour</a></li>
                     </ul>
-                    <button class="nav-toggler">
+                    <button class="nav-toggler" aria-label="Toggle navigation">
                         <span></span>
                     </button>
                 </nav>
@@ -36,16 +35,19 @@
     <div class="page-title-area">
         <div class="container">
             <h1>Featured Artists</h1>
-            <div class="breadcrumb">
-                <a href="index.html">Home</a> / Artists
-            </div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Artists</li>
+                </ol>
+            </nav>
         </div>
     </div>
 
     <!-- Artists Era Filter -->
-    <section class="artists-filter-section">
+    <section class="artists-filter-section py-5">
         <div class="container">
-            <div class="era-tabs">
+            <div class="era-tabs d-flex flex-wrap justify-content-center gap-3">
                 <button class="era-tab active" data-era="all">All Eras</button>
                 <button class="era-tab" data-era="renaissance">Renaissance</button>
                 <button class="era-tab" data-era="impressionism">Impressionism</button>
@@ -57,9 +59,9 @@
     </section>
 
     <!-- Artists Grid -->
-    <section class="artists-grid-section">
+    <section class="artists-grid-section py-5">
         <div class="container">
-            <div class="row" id="artist-container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="artist-container">
                 <!-- Artists will be loaded by JavaScript -->
             </div>
         </div>
@@ -69,29 +71,33 @@
     <div class="artist-modal" id="artistModal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
+            <button type="button" class="modal-close" aria-label="Close">×</button>
             <div class="modal-body">
-                <div class="row">
+                <div class="row g-4">
                     <div class="col-lg-4">
                         <div class="artist-image">
-                            <img src="" alt="" id="modalArtistImage">
-                            <div class="artist-social">
-                                <a href="#" class="wiki-link"><i class="fab fa-wikipedia-w"></i></a>
-                                <a href="#" class="museum-link"><i class="fas fa-university"></i></a>
+                            <img src="" alt="" id="modalArtistImage" class="img-fluid">
+                            <div class="artist-social mt-3">
+                                <a href="#" class="wiki-link" aria-label="Wikipedia">
+                                    <i class="fab fa-wikipedia-w"></i>
+                                </a>
+                                <a href="#" class="museum-link" aria-label="Museum page">
+                                    <i class="fas fa-university"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="artist-details">
                             <h2 id="modalArtistName"></h2>
-                            <div class="artist-meta">
-                                <span id="modalArtistLifespan"></span>
-                                <span id="modalArtistNationality"></span>
-                                <span id="modalArtistMovement"></span>
+                            <div class="artist-meta d-flex flex-wrap gap-3 mb-4">
+                                <span id="modalArtistLifespan" class="badge bg-primary"></span>
+                                <span id="modalArtistNationality" class="badge bg-secondary"></span>
+                                <span id="modalArtistMovement" class="badge bg-info"></span>
                             </div>
-                            <div class="artist-bio" id="modalArtistBio"></div>
+                            <div class="artist-bio mb-4" id="modalArtistBio"></div>
                             <h3>Notable Works</h3>
-                            <div class="artist-works" id="modalArtistWorks">
+                            <div class="artist-works row row-cols-2 row-cols-md-3 g-3 mb-4" id="modalArtistWorks">
                                 <!-- Works will be loaded by JavaScript -->
                             </div>
                             <div class="artist-timeline" id="modalArtistTimeline">
@@ -107,16 +113,16 @@
     <!-- Footer -->
     <footer class="site-footer">
         <div class="container">
-            <div class="row">
+            <div class="row gy-4">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget about-widget">
                         <h4>Artistry</h4>
-                        <p>Immerse yourself in the world of fine art through our curated collections and exhibitions featuring renowned masters and emerging talents.</p>
+                        <p>Immerse yourself in the world of fine art through our curated collections featuring renowned masters and emerging talents.</p>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
                         </div>
                     </div>
                 </div>
@@ -127,7 +133,6 @@
                             <li><a href="index.html">Home</a></li>
                             <li><a href="gallery.html">Gallery</a></li>
                             <li><a href="artists.html">Artists</a></li>
-                            <li><a href="exhibitions.html">Exhibitions</a></li>
                             <li><a href="virtual.html">3D Tour</a></li>
                         </ul>
                     </div>
@@ -153,7 +158,7 @@
                     </div>
                 </div>
             </div>
-            <div class="copyright-bar">
+            <div class="copyright-bar mt-4">
                 <p>© 2025 Artistry. All rights reserved.</p>
             </div>
         </div>
