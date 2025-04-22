@@ -1,7 +1,7 @@
 // Array data for artworks
-const artTitles = ["Starry Night", "Mona Lisa", "The Scream"];
-const artArtists = ["Vincent van Gogh", "Leonardo da Vinci", "Edvard Munch"];
-const artImages = ["imgs/starrynight.jpg", "imgs/monalisa.jpg", "imgs/thescream.jpg"];
+const artTitles = ["Starry Night", "Mona Lisa", "The Scream", "The Persistence of Memory", "San Giorgio Maggiore at Dusk" ];
+const artArtists = ["Vincent van Gogh", "Leonardo da Vinci", "Edvard Munch", "Salvador Dali", "Claude Monet"];
+const artImages = ["imgs/starrynight.jpg", "imgs/monalisa.jpg", "imgs/thescream.jpg", "imgs/memory.jpg" , "imgs/sunset.jpg"];
 const artDescriptions = [
     "A swirling night sky masterpiece from 1889.",
     "The iconic portrait with a mysterious smile, circa 1503.",
@@ -20,16 +20,16 @@ const artDimensions = [
 ];
 
 // Array data for artists
-const artistNames = ["Vincent van Gogh", "Leonardo da Vinci", "Edvard Munch"];
+const artistNames = ["Vincent van Gogh", "Leonardo da Vinci", "Edvard Munch", "Claude Monet", "Salvador Dali"];
 const artistBios = [
     "Post-Impressionist known for bold colors and emotional depth.",
     "Renaissance genius, painter, and inventor.",
     "Norwegian symbolist painter of intense emotion."
 ];
-const artistImages = ["imgs/vin.webp", "imgs/vinch.webp", "imgs/munch.jpg"];
-const artistEras = ["post-impressionism", "renaissance", "expressionism"];
-const artistNationalities = ["Dutch", "Italian", "Norwegian"];
-const artistLifespans = ["1853-1890", "1452-1519", "1863-1944"];
+const artistImages = ["imgs/vin.webp", "imgs/vinch.webp", "imgs/munch.jpg", "imgs/claude.webp", "imgs/bet.jpg"];
+const artistEras = ["post-impressionism", "renaissance", "expressionism", "impressionism", "surrealism"];
+const artistNationalities = ["Dutch", "Italian", "Norwegian", "French", "Spanish"];
+const artistLifespans = ["1853-1890", "1452-1519", "1863-1944", "1840-1926", "1904-1989"];
 
 // Gallery page functions
 function loadArtworks() {
