@@ -5,18 +5,24 @@ const artImages = ["imgs/starrynight.jpg", "imgs/monalisa.jpg", "imgs/thescream.
 const artDescriptions = [
     "A swirling night sky masterpiece from 1889.",
     "The iconic portrait with a mysterious smile, circa 1503.",
-    "An expressionist depiction of anxiety from 1893."
+    "An expressionist depiction of anxiety from 1893.",
+    "A surrealist masterpiece featuring melting clocks in a dreamlike landscape.",
+    "A breathtaking sunset view of the Venetian church, painted with Monet's signature impressionist style."
 ];
-const artYears = [1889, 1503, 1893];
+const artYears = [1889, 1503, 1893, 1931, 1908];
 const artMediums = [
     "Oil on canvas",
     "Oil on poplar panel",
-    "Oil, tempera, and pastel on cardboard"
+    "Oil, tempera, and pastel on cardboard",
+    "Oil on canvas",
+    "Oil on canvas"
 ];
 const artDimensions = [
     "73.7 cm × 92.1 cm",
     "77 cm × 53 cm",
-    "91 cm × 73.5 cm"
+    "91 cm × 73.5 cm",
+    "24.1 cm × 33 cm",
+    "65.2 cm × 92.4 cm"
 ];
 
 // Array data for artists
@@ -24,7 +30,9 @@ const artistNames = ["Vincent van Gogh", "Leonardo da Vinci", "Edvard Munch", "C
 const artistBios = [
     "Post-Impressionist known for bold colors and emotional depth.",
     "Renaissance genius, painter, and inventor.",
-    "Norwegian symbolist painter of intense emotion."
+    "Norwegian symbolist painter of intense emotion.",
+    "French Impressionist master who revolutionized outdoor painting and captured the effects of light.",
+    "Spanish Surrealist known for his striking and bizarre images in a meticulous style."
 ];
 const artistImages = ["imgs/vin.webp", "imgs/vinch.webp", "imgs/munch.jpg", "imgs/claude.webp", "imgs/bet.jpg"];
 const artistEras = ["post-impressionism", "renaissance", "expressionism", "impressionism", "surrealism"];
@@ -128,18 +136,48 @@ function showModal(modal) {
     modal.style.display = 'block';
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
+    
+    // Add click event listeners for closing
+    const closeButton = modal.querySelector('.modal-close');
+    const overlay = modal.querySelector('.modal-overlay');
+    
+    // Remove any existing listeners first to prevent duplicates
+    modal.removeEventListener('click', handleModalClick);
+    closeButton.removeEventListener('click', handleCloseClick);
+    
+    // Add new listeners
+    modal.addEventListener('click', handleModalClick);
+    closeButton.addEventListener('click', handleCloseClick);
+}
+
+// Handle clicks on the modal container
+function handleModalClick(e) {
+    if (e.target.classList.contains('modal-overlay')) {
+        closeModal(e.target.closest('.artwork-modal, .artist-modal').id);
+    }
+}
+
+// Handle clicks on the close button
+function handleCloseClick(e) {
+    const modal = e.target.closest('.artwork-modal, .artist-modal');
+    closeModal(modal.id);
 }
 
 // Helper function to close modals
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (!modal) return;
-
+    
     modal.classList.remove('show');
     setTimeout(() => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }, 300);
+    
+    // Clean up event listeners
+    const closeButton = modal.querySelector('.modal-close');
+    modal.removeEventListener('click', handleModalClick);
+    closeButton.removeEventListener('click', handleCloseClick);
 }
 
 // Filter functions
