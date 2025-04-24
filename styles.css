@@ -1099,3 +1099,39 @@ section {
     }
 }
 
+/* Virtual Tour Page Styles */
+.virtual-tour-page {
+    overflow: hidden;
+}
+
+.virtual-tour-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.virtual-tour-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Adjust header for virtual tour page */
+.virtual-tour-page .header-area {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .virtual-tour-container {
+        height: calc(100vh - 60px); /* Account for mobile header */
+        top: 60px;
+    }
+}
+
