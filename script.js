@@ -105,8 +105,6 @@ const artistLifespans = [
     "1475-1564"
 ]; // Array of lifespans
 
-// Initialize favorites array from localStorage or empty array
-let favorites = JSON.parse(localStorage.getItem('artFavorites')) || []; // Store favorite artwork indices
 
 // Function to load artworks into gallery page with proportional cards
 function loadArtworks() {
@@ -256,24 +254,6 @@ function updateFavoriteButtons() {
     });
 }
 
-// Function to share artwork via Web Share API or clipboard
-function shareArtwork(index) {
-    if (navigator.share) { // If Web Share API is supported
-        navigator.share({ // Share artwork details
-            title: artTitles[index], // Share title
-            text: `Check out ${artTitles[index]} by ${artArtists[index]}`, // Share description
-            url: window.location.href // Share current URL
-        }).catch(console.error); // Log any errors
-    } else { // Fallback to clipboard
-        const input = document.createElement('input'); // Create temporary input
-        input.value = window.location.href; // Set input value to URL
-        document.body.appendChild(input); // Add to DOM
-        input.select(); // Select text
-        document.execCommand('copy'); // Copy to clipboard
-        document.body.removeChild(input); // Remove input
-        alert('Link copied to clipboard!'); // Show confirmation
-    }
-}
 
 // Initialize page functionality on load
 document.addEventListener('DOMContentLoaded', () => {

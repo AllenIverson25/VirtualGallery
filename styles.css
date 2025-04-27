@@ -148,44 +148,78 @@ img {
 /* Button Styling */
 /* ========================================================================= */
 /* Customize buttons to feel unique, overriding Bootstrap defaults */
-.btn-primary, .btn-outline-primary, .btn-subscribe, .filter-btn, .era-tab {
-    font-family: var(--font-secondary); /* Montserrat for buttons */
-    font-weight: 600; /* Semi-bold */
-    text-transform: uppercase; /* Uppercase for elegance */
-    letter-spacing: 1.5px; /* Spaced-out letters */
-    border-radius: 30px; /* Rounded edges */
-    padding: 10px 25px; /* Compact padding */
-    transition: var(--transition); /* Smooth hover effects */
+.btn-primary, .btn-outline-primary {
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 30px;
+    padding: 10px 25px;
+    transition: var(--transition);
 }
 .btn-primary {
-    background: var(--primary-color); /* Bronze background */
-    border-color: var(--primary-color); /* Bronze border */
-    color: #fff; /* White text */
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
 }
 .btn-primary:hover {
-    background: var(--accent-color); /* Orange on hover */
-    border-color: var(--accent-color); /* Orange border */
-    box-shadow: 0 8px 20px rgba(162,102,50,0.4); /* Subtle shadow */
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 20px rgba(162,102,50,0.4);
 }
 .btn-outline-primary {
-    border-color: var(--primary-color); /* Bronze border */
-    color: var(--primary-color); /* Bronze text */
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
-.btn-outline-primary:hover, .filter-btn:hover, .era-tab:hover, .filter-btn.active, .era-tab.active {
-    background: var(--primary-color); /* Bronze background */
-    border-color: var(--primary-color); /* Bronze border */
-    color: #fff; /* White text */
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
 }
-.btn-subscribe {
-    background: var(--primary-color); /* Bronze background */
-    border: none; /* No border */
-    color: #fff; /* White text */
-    position: absolute; /* Position inside input */
-    top: 4px; /* Align with input */
-    right: 4px; /* Align with input */
+
+/* ========================================================================= */
+/* Newsletter Section */
+/* ========================================================================= */
+/* Style newsletter section with custom form */
+.newsletter-inner {
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
-.btn-subscribe:hover {
-    background: var(--accent-color); /* Orange on hover */
+
+.newsletter-form .input-group {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.newsletter-form .form-control {
+    height: 50px;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    flex: 1;
+}
+
+.newsletter-form .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(162,102,50,0.2);
+}
+
+.newsletter-form .btn {
+    height: 50px;
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-size: 16px;
+    margin-left: -25px;
+    z-index: 2;
+    border: none;
+}
+
+.newsletter-form .btn:hover {
+    transform: translateX(5px);
+    transition: all 0.3s ease;
 }
 
 /* ========================================================================= */
@@ -196,7 +230,7 @@ img {
     border: none; /* Remove default border */
     border-radius: var(--border-radius); /* Rounded corners */
     background: #fff; /* White background */
-    box-shadow: var(--box-shadow); /* Subсию: Subtle shadow */
+    box-shadow: var(--box-shadow); /* Subtle shadow */
     height: 100%; /* Ensure cards fill container */
     display: flex; /* Flex layout for consistent height */
     flex-direction: column; /* Stack content vertically */
@@ -319,25 +353,6 @@ section::before {
 }
 
 /* ========================================================================= */
-/* Newsletter Section */
-/* ========================================================================= */
-/* Style newsletter section with custom form */
-.newsletter-inner {
-    background: #fff; /* White background */
-    border-radius: var(--border-radius); /* Rounded corners */
-    box-shadow: var(--box-shadow); /* Subtle shadow */
-}
-.newsletter-form input {
-    border-radius: 30px; /* Rounded input */
-    border: 1px solid #ddd; /* Light border */
-    padding: 12px 20px; /* Comfortable padding */
-}
-.newsletter-form input:focus {
-    border-color: var(--primary-color); /* Bronze border */
-    box-shadow: 0 0 10px rgba(162,102,50,0.2); /* Subtle glow */
-}
-
-/* ========================================================================= */
 /* Footer Styling */
 /* ========================================================================= */
 /* Style footer with hover effects */
@@ -367,33 +382,6 @@ section::before {
     color: var(--accent-color); /* Orange on hover */
 }
 
-/* ========================================================================= */
-/* Modal Styling */
-/* ========================================================================= */
-/* Customize modals with white background */
-.modal-content {
-    background: #fff; /* Pure white background */
-    border-radius: var(--border-radius); /* Rounded corners */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3); /* Deep shadow */
-}
-.modal-dialog {
-    background: rgba(0,0,0,0.8); /* Dark overlay */
-}
-.btn-close {
-    filter: invert(1); /* White close button */
-    opacity: 0.7; /* Slightly transparent */
-}
-.btn-close:hover {
-    opacity: 1; /* Fully opaque on hover */
-}
-.btn-favorite, .btn-share {
-    border-radius: 30px; /* Rounded edges */
-    padding: 10px 20px; /* Compact padding */
-}
-.btn-favorite:hover, .btn-share:hover {
-    background: var(--primary-color); /* Bronze background */
-    color: #fff; /* White text */
-}
 
 /* ========================================================================= */
 /* Virtual Tour Styling */
@@ -437,13 +425,4 @@ section::before {
         width: 150px; /* Smaller images */
         height: 150px; /* Square aspect */
     }
-}
-
-/* ========================================================================= */
-/* Accessibility */
-/* ========================================================================= */
-/* Add focus styles for accessibility */
-.btn:focus, .filter-btn:focus, .era-tab:focus, .btn-close:focus {
-    outline: 3px solid var(--accent-color); /* Orange outline */
-    outline-offset: 3px; /* Space from element */
 }
