@@ -1,107 +1,109 @@
+<!-- Artistry Featured Artists Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for charset and responsive viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artistry - Featured Artists</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Custom styles -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Animate.css for fade-in effects -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Google Fonts for Playfair Display and Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body class="artists-page">
-    <!-- Advanced Navbar -->
-    <header class="header-area">
-        <div class="navbar-area">
+    <!-- Navbar using Bootstrap's nav component -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
-                <nav class="site-navbar">
-                    <a href="index.html" class="site-logo">Artistry</a>
-                    <ul class="site-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
-                        <li><a href="artists.html" class="active">Artists</a></li>
-                        <li><a href="virtual.html">3D Tour</a></li>
+                <a class="navbar-brand site-logo" href="index.html">Artistry</a>
+                <button class="navbar-toggler nav-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto site-menu">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="artists.html">Artists</a></li>
+                        <li class="nav-item"><a class="nav-link" href="virtual.html">3D Tour</a></li>
                     </ul>
-                    <button class="nav-toggler" aria-label="Toggle navigation">
-                        <span></span>
-                    </button>
-                </nav>
+                </div>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- Page Title -->
-    <div class="page-title-area">
+    <!-- Page title with breadcrumb -->
+    <div class="page-title-area py-5 text-center text-white">
         <div class="container">
-            <h1>Featured Artists</h1>
+            <h1 class="display-4">Featured Artists</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Artists</li>
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Artists</li>
                 </ol>
             </nav>
         </div>
     </div>
 
-    <!-- Artists Era Filter -->
+    <!-- Artist era filter buttons -->
     <section class="artists-filter-section py-5">
         <div class="container">
             <div class="era-tabs d-flex flex-wrap justify-content-center gap-3">
-                <button class="era-tab active" data-era="all">All Eras</button>
-                <button class="era-tab" data-era="renaissance">Renaissance</button>
-                <button class="era-tab" data-era="impressionism">Impressionism</button>
-                <button class="era-tab" data-era="post-impressionism">Post-Impressionism</button>
-                <button class="era-tab" data-era="expressionism">Expressionism</button>
-                <button class="era-tab" data-era="surrealism">Surrealism</button>
+                <button class="btn btn-outline-primary era-tab active" data-era="all">All Eras</button>
+                <button class="btn btn-outline-primary era-tab" data-era="renaissance">Renaissance</button>
+                <button class="btn btn-outline-primary era-tab" data-era="impressionism">Impressionism</button>
+                <button class="btn btn-outline-primary era-tab" data-era="post-impressionism">Post-Impressionism</button>
+                <button class="btn btn-outline-primary era-tab" data-era="expressionism">Expressionism</button>
+                <button class="btn btn-outline-primary era-tab" data-era="surrealism">Surrealism</button>
             </div>
         </div>
     </section>
 
-    <!-- Artists Grid -->
+    <!-- Artists grid loaded by JavaScript -->
     <section class="artists-grid-section py-5">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="artist-container">
-                <!-- Artists will be loaded by JavaScript -->
+            <div class="row" id="artist-container">
+                <!-- Artists loaded by JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Artist Modal -->
-    <div class="artist-modal" id="artistModal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button type="button" class="modal-close" aria-label="Close"><i class="fa-solid fa-x"></i></button>
+    <!-- Artist modal using Bootstrap modal -->
+    <div class="modal fade artist-modal" id="artistModal" tabindex="-1" aria-labelledby="artistModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-content">
             <div class="modal-body">
+                <button type="button" class="btn-close modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="row g-4">
                     <div class="col-lg-4">
                         <div class="artist-image">
-                            <img src="" alt="" id="modalArtistImage" class="img-fluid">
-                            <div class="artist-social mt-3">
-                                <a href="#" class="wiki-link" aria-label="Wikipedia">
-                                    <i class="fab fa-wikipedia-w"></i>
-                                </a>
-                                <a href="#" class="museum-link" aria-label="Museum page">
-                                    <i class="fas fa-university"></i>
-                                </a>
+                            <img src="" alt="" id="modalArtistImage" class="img-fluid rounded">
+                            <div class="artist-social mt-3 d-flex gap-2">
+                                <a href="#" class="btn btn-outline-dark" aria-label="Wikipedia"><i class="fab fa-wikipedia-w"></i></a>
+                                <a href="#" class="btn btn-outline-dark" aria-label="Museum page"><i class="fas fa-university"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="artist-details">
-                            <h2 id="modalArtistName"></h2>
-                            <div class="artist-meta d-flex flex-wrap gap-3 mb-4">
+                            <h2 id="modalArtistName" class="h3"></h2>
+                            <div class="artist-meta d-flex flex-wrap gap-2 mb-4">
                                 <span id="modalArtistLifespan" class="badge bg-primary"></span>
                                 <span id="modalArtistNationality" class="badge bg-secondary"></span>
                                 <span id="modalArtistMovement" class="badge bg-info"></span>
                             </div>
-                            <div class="artist-bio mb-4" id="modalArtistBio"></div>
-                            <h3>Notable Works</h3>
+                            <p id="modalArtistBio" class="mb-4"></p>
+                            <h3 class="h4">Notable Works</h3>
                             <div class="artist-works row row-cols-2 row-cols-md-3 g-3 mb-4" id="modalArtistWorks">
-                                <!-- Works will be loaded by JavaScript -->
+                                <!-- Works loaded by JavaScript -->
                             </div>
                             <div class="artist-timeline" id="modalArtistTimeline">
-                                <!-- Timeline will be loaded by JavaScript -->
+                                <!-- Timeline loaded by JavaScript -->
                             </div>
                         </div>
                     </div>
@@ -110,62 +112,63 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="site-footer">
+    <!-- Footer with Bootstrap grid -->
+    <footer class="site-footer bg-dark text-light py-5">
         <div class="container">
-            <div class="row gy-4">
+            <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="footer-widget about-widget">
-                        <h4>Artistry</h4>
-                        <p>Immerse yourself in the world of fine art through our curated collections featuring renowned masters and emerging talents.</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <div class="footer-widget">
+                        <h4 class="h5">Artistry</h4>
+                        <p>Immerse yourself in fine art with our curated collections.</p>
+                        <div class="social-links d-flex gap-2">
+                            <a href="#" class="btn btn-outline-light rounded-circle" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="btn btn-outline-light rounded-circle" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-outline-light rounded-circle" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn btn-outline-light rounded-circle" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <div class="footer-widget">
-                        <h4>Quick Links</h4>
+                        <h4 class="h5">Quick Links</h4>
                         <ul class="footer-links">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="artists.html">Artists</a></li>
-                            <li><a href="virtual.html">3D Tour</a></li>
+                            <li><a href="index.html" class="text-light">Home</a></li>
+                            <li><a href="gallery.html" class="text-light">Gallery</a></li>
+                            <li><a href="artists.html" class="text-light">Artists</a></li>
+                            <li><a href="virtual.html" class="text-light">3D Tour</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h4>Open Hours</h4>
+                        <h4 class="h5">Open Hours</h4>
                         <ul class="open-hours">
-                            <li><span>Monday - Friday:</span> 10:00 AM - 8:00 PM</li>
-                            <li><span>Saturday & Sunday:</span> 11:00 AM - 6:00 PM</li>
-                            <li><span>Virtual Tour:</span> Available 24/7</li>
+                            <li class="d-flex justify-content-between"><span>Monday - Friday:</span> 10:00 AM - 8:00 PM</li>
+                            <li class="d-flex justify-content-between"><span>Saturday & Sunday:</span> 11:00 AM - 6:00 PM</li>
+                            <li class="d-flex justify-content-between"><span>Virtual Tour:</span> Available 24/7</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h4>Contact Information</h4>
+                        <h4 class="h5">Contact Information</h4>
                         <ul class="contact-info">
-                            <li><i class="fas fa-map-marker-alt"></i> 123 Art Street, Gallery District</li>
-                            <li><i class="fas fa-phone-alt"></i> +1 234 567 8900</li>
-                            <li><i class="fas fa-envelope"></i> info@artistry.com</li>
+                            <li class="d-flex align-items-start"><i class="fas fa-map-marker-alt me-3"></i> 123 Art Street, Gallery District</li>
+                            <li class="d-flex align-items-start"><i class="fas fa-phone-alt me-3"></i> +1 234 567 8900</li>
+                            <li class="d-flex align-items-start"><i class="fas fa-envelope me-3"></i> info@artistry.com</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="copyright-bar mt-4">
-                <p>© 2025 Artistry. All rights reserved.</p>
+            <div class="copyright-bar mt-4 text-center border-top pt-3">
+                <p>&copy; 2025 Artistry. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <!-- Bootstrap 5.3.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Custom JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
