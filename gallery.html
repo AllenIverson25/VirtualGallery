@@ -12,34 +12,30 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Animate.css for fade-in effects -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Google Fonts for Playfair Display and Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="gallery-page">
-    <!-- Navbar using Bootstrap's nav component -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand site-logo" href="index.html">Artistry</a>
-                <button class="navbar-toggler nav-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto site-menu">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="artists.html">Artists</a></li>
-                        <li class="nav-item"><a class="nav-link" href="virtual.html">3D Tour</a></li>
-                    </ul>
-                </div>
+    <!-- Navbar positioned at the top, fixed and compact -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand site-logo" href="index.html">Artistry</a>
+            <button class="navbar-toggler nav-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto site-menu">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="artists.html">Artists</a></li>
+                    <li class="nav-item"><a class="nav-link" href="virtual.html">3D Tour</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- Page title with breadcrumb -->
-    <div class="page-title-area py-5 text-center text-white">
+    <!-- Page title header, fully visible below navbar -->
+    <header class="page-title-area py-5 text-center text-white">
         <div class="container">
             <h1 class="display-4">Our Collection</h1>
             <nav aria-label="breadcrumb">
@@ -49,29 +45,24 @@
                 </ol>
             </nav>
         </div>
-    </div>
+    </header>
 
-    <!-- Gallery filter and search -->
+    <!-- Gallery filter section -->
     <section class="gallery-filter-section py-5">
         <div class="container">
-            <div class="d-flex flex-wrap gap-3 mb-4">
+            <div class="d-flex flex-wrap gap-3 mb-4 justify-content-center">
                 <button class="btn btn-outline-primary filter-btn active" data-filter="all">All Artworks</button>
                 <button class="btn btn-outline-primary filter-btn" data-filter="Vincent van Gogh">Van Gogh</button>
                 <button class="btn btn-outline-primary filter-btn" data-filter="Leonardo da Vinci">Da Vinci</button>
                 <button class="btn btn-outline-primary filter-btn" data-filter="Edvard Munch">Munch</button>
                 <button class="btn btn-outline-primary filter-btn" data-filter="Claude Monet">Monet</button>
                 <button class="btn btn-outline-primary filter-btn" data-filter="Salvador Dali">Dali</button>
-                <div class="ms-auto">
-                    <div class="input-group">
-                        <input type="text" id="artSearch" class="form-control" placeholder="Search artwork...">
-                        <button class="btn btn-outline-primary" type="button" id="searchBtn"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
+                <button class="btn btn-outline-primary filter-btn" data-filter="Michelangelo">Michelangelo</button>
             </div>
         </div>
     </section>
 
-    <!-- Gallery collection loaded by JavaScript -->
+    <!-- Gallery collection with proportional cards -->
     <section class="gallery-collection py-5">
         <div class="container">
             <div class="row" id="gallery-container">
@@ -80,7 +71,7 @@
         </div>
     </section>
 
-    <!-- Artwork modal using Bootstrap modal -->
+    <!-- Artwork modal with white background -->
     <div class="modal fade artwork-modal" id="artworkModal" tabindex="-1" aria-labelledby="artworkModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-content">
             <div class="modal-body">
@@ -126,7 +117,7 @@
                             <a href="#" class="btn btn-outline-light rounded-circle" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                             <a href="#" class="btn btn-outline-light rounded-circle" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
                         </div>
-                    odkryć
+                    </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <div class="footer-widget">
@@ -161,7 +152,7 @@
                 </div>
             </div>
             <div class="copyright-bar mt-4 text-center border-top pt-3">
-                <p>&copy; 2025 Artistry. All rights reserved.</p>
+                <p>© 2025 Artistry. All rights reserved.</p>
             </div>
         </div>
     </footer>

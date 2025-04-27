@@ -1,64 +1,142 @@
-// Artwork data arrays
-const artTitles = ["Starry Night", "Mona Lisa", "The Scream", "The Persistence of Memory", "San Giorgio Maggiore at Dusk"];
-const artArtists = ["Vincent van Gogh", "Leonardo da Vinci", "Edvard Munch", "Salvador Dali", "Claude Monet"];
-const artImages = ["imgs/starrynight.jpg", "imgs/monalisa.jpg", "imgs/thescream.jpg", "imgs/memory.jpg", "imgs/sunset.jpg"];
-const artDescriptions = [
+// Define artwork data arrays for gallery
+const artTitles = [
+    "Starry Night",
+    "Mona Lisa",
+    "The Scream",
+    "The Persistence of Memory",
+    "San Giorgio Maggiore at Dusk",
+    "The Potato Eaters",
+    "The Last Supper"
+]; // Array of artwork titles
+const artArtists = [
+    "Vincent van Gogh",
+    "Leonardo da Vinci",
+    "Edvard Munch",
+    "Salvador Dali",
+    "Claude Monet",
+    "Vincent van Gogh",
+    "Michelangelo"
+]; // Array of artist names
+const artImages = [
+    "imgs/starrynight.jpg",
+    "imgs/monalisa.jpg",
+    "imgs/thescream.jpg",
+    "imgs/memory.jpg",
+    "imgs/sunset.jpg",
+    "imgs/potatoeaters.png",
+    "imgs/thelastsupper.png"
+]; // Array of image paths
+const artDescriptions = [ // Array of artwork descriptions
     "A swirling night sky masterpiece from 1889.",
     "The iconic portrait with a mysterious smile, circa 1503.",
     "An expressionist depiction of anxiety from 1893.",
     "A surrealist masterpiece featuring melting clocks in a dreamlike landscape.",
-    "A breathtaking sunset view of the Venetian church, painted with Monet's signature impressionist style."
+    "A breathtaking sunset view of the Venetian church, painted with Monet's signature impressionist style.",
+    "A depiction of peasant life with earthy tones, painted in 1885.",
+    "A monumental fresco depicting the Last Supper, created around 1495-1498."
 ];
-const artYears = [1889, 1503, 1893, 1931, 1908];
-const artMediums = ["Oil on canvas", "Oil on poplar panel", "Oil, tempera, and pastel on cardboard", "Oil on canvas", "Oil on canvas"];
-const artDimensions = ["73.7 cm × 92.1 cm", "77 cm × 53 cm", "91 cm × 73.5 cm", "24.1 cm × 33 cm", "65.2 cm × 92.4 cm"];
+const artYears = [1889, 1503, 1893, 1931, 1908, 1885, 1498]; // Array of creation years
+const artMediums = [
+    "Oil on canvas",
+    "Oil on poplar panel",
+    "Oil, tempera, and pastel on cardboard",
+    "Oil on canvas",
+    "Oil on canvas",
+    "Oil on canvas",
+    "Fresco"
+]; // Array of mediums
+const artDimensions = [
+    "73.7 cm × 92.1 cm",
+    "77 cm × 53 cm",
+    "91 cm × 73.5 cm",
+    "24.1 cm × 33 cm",
+    "65.2 cm × 92.4 cm",
+    "82 cm × 114 cm",
+    "460 cm × 880 cm"
+]; // Array of dimensions
 
-// Artist data arrays
-const artistNames = ["Vincent van Gogh", "Leonardo da Vinci", "Edvard Munch", "Claude Monet", "Salvador Dali"];
-const artistBios = [
+// Define artist data arrays for artists page
+const artistNames = [
+    "Vincent van Gogh",
+    "Leonardo da Vinci",
+    "Edvard Munch",
+    "Claude Monet",
+    "Salvador Dali",
+    "Michelangelo"
+]; // Array of artist names
+const artistBios = [ // Array of artist biographies
     "Post-Impressionist known for bold colors and emotional depth.",
     "Renaissance genius, painter, and inventor.",
     "Norwegian symbolist painter of intense emotion.",
     "French Impressionist master who revolutionized outdoor painting.",
-    "Spanish Surrealist known for his striking and bizarre images."
+    "Spanish Surrealist known for his striking and bizarre images.",
+    "Renaissance sculptor, painter, and architect of unparalleled genius."
 ];
-const artistImages = ["imgs/vin.webp", "imgs/vinch.webp", "imgs/munch.jpg", "imgs/claude.webp", "imgs/bet.jpg"];
-const artistEras = ["post-impressionism", "renaissance", "expressionism", "impressionism", "surrealism"];
-const artistNationalities = ["Dutch", "Italian", "Norwegian", "French", "Spanish"];
-const artistLifespans = ["1853-1890", "1452-1519", "1863-1944", "1840-1926", "1904-1989"];
+const artistImages = [
+    "imgs/vin.webp",
+    "imgs/vinch.webp",
+    "imgs/munch.jpg",
+    "imgs/claude.webp",
+    "imgs/bet.jpg",
+    "imgs/michelangelo.png"
+]; // Array of artist image paths
+const artistEras = [
+    "post-impressionism",
+    "renaissance",
+    "expressionism",
+    "impressionism",
+    "surrealism",
+    "renaissance"
+]; // Array of artistic eras
+const artistNationalities = [
+    "Dutch",
+    "Italian",
+    "Norwegian",
+    "French",
+    "Spanish",
+    "Italian"
+]; // Array of nationalities
+const artistLifespans = [
+    "1853-1890",
+    "1452-1519",
+    "1863-1944",
+    "1840-1926",
+    "1904-1989",
+    "1475-1564"
+]; // Array of lifespans
 
-// Favorites array stored in localStorage
-let favorites = JSON.parse(localStorage.getItem('artFavorites')) || [];
+// Initialize favorites array from localStorage or empty array
+let favorites = JSON.parse(localStorage.getItem('artFavorites')) || []; // Store favorite artwork indices
 
-// Loads artworks into gallery page
+// Function to load artworks into gallery page with proportional cards
 function loadArtworks() {
-    const container = document.getElementById("gallery-container");
-    if (!container) return;
-    container.innerHTML = '';
-    for (let i = 0; i < artTitles.length; i++) {
-        container.innerHTML += `
+    const container = document.getElementById("gallery-container"); // Get gallery container element
+    if (!container) return; // Exit if container not found
+    container.innerHTML = ''; // Clear existing content
+    for (let i = 0; i < artTitles.length; i++) { // Loop through artworks
+        container.innerHTML += ` 
             <div class="col-12 col-md-6 col-lg-4 mb-4">
                 <div class="card h-100 artwork-card" data-artist="${artArtists[i]}">
                     <div class="card-img-wrapper">
                         <img src="${artImages[i]}" class="card-img-top" alt="${artTitles[i]}" loading="lazy">
                     </div>
-                    <div class="card-body d-flex flex-column">
+                    <div class="card-body">
                         <h5 class="card-title">${artTitles[i]}</h5>
-                        <p class="card-text flex-grow-1">By ${artArtists[i]}</p>
-                        <button class="btn btn-primary mt-auto" onclick="showArtworkModal(${i})">Learn More</button>
+                        <p class="card-text">By ${artArtists[i]}</p>
+                        <button class="btn btn-primary" onclick="showArtworkModal(${i})">Learn More</button>
                     </div>
                 </div>
             </div>`;
     }
 }
 
-// Loads artists into artists page
+// Function to load artists into artists page with proportional cards
 function loadArtists() {
-    const container = document.getElementById("artist-container");
-    if (!container) return;
-    container.innerHTML = '';
-    for (let i = 0; i < artistNames.length; i++) {
-        container.innerHTML += `
+    const container = document.getElementById("artist-container"); // Get artist container element
+    if (!container) return; // Exit if container not found
+    container.innerHTML = ''; // Clear existing content
+    for (let i = 0; i < artistNames.length; i++) { // Loop through artists
+        container.innerHTML += ` 
             <div class="col-12 col-md-6 col-lg-4 mb-4" data-era="${artistEras[i]}">
                 <div class="card h-100 artist-card">
                     <div class="card-img-wrapper">
@@ -74,211 +152,163 @@ function loadArtists() {
     }
 }
 
-// Loads featured artworks into carousel on index page
-function loadFeaturedCarousel() {
-    const container = document.getElementById("carouselItems");
-    if (!container) return;
-    container.innerHTML = '';
-    for (let i = 0; i < artTitles.length; i++) {
-        container.innerHTML += `
-            <div class="carousel-item ${i === 0 ? 'active' : ''}">
-                <div class="featured-item">
-                    <img src="${artImages[i]}" class="d-block w-100" alt="${artTitles[i]}" loading="lazy">
-                    <div class="featured-info text-white p-4">
-                        <h3>${artTitles[i]}</h3>
-                        <p>By ${artArtists[i]}</p>
-                        <a href="gallery.html" class="featured-link text-white">View More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>`;
-    }
-}
-
-// Shows artwork modal with details
+// Function to show artwork modal with details
 function showArtworkModal(index) {
-    const modal = document.getElementById('artworkModal');
-    if (!modal) return;
-    document.getElementById('modalArtworkImage').src = artImages[index];
-    document.getElementById('modalArtworkTitle').textContent = artTitles[index];
-    document.getElementById('modalArtworkArtist').textContent = artArtists[index];
-    document.getElementById('modalArtworkYear').textContent = artYears[index];
-    document.getElementById('modalArtworkMedium').textContent = artMediums[index];
-    document.getElementById('modalArtworkDimensions').textContent = artDimensions[index];
-    document.getElementById('modalArtworkDescription').textContent = artDescriptions[index];
-    showModal(modal, index);
+    const modal = document.getElementById('artworkModal'); // Get artwork modal element
+    if (!modal) return; // Exit if modal not found
+    document.getElementById('modalArtworkImage').src = artImages[index]; // Set modal image
+    document.getElementById('modalArtworkTitle').textContent = artTitles[index]; // Set modal title
+    document.getElementById('modalArtworkArtist').textContent = artArtists[index]; // Set artist name
+    document.getElementById('modalArtworkYear').textContent = artYears[index]; // Set year
+    document.getElementById('modalArtworkMedium').textContent = artMediums[index]; // Set medium
+    document.getElementById('modalArtworkDimensions').textContent = artDimensions[index]; // Set dimensions
+    document.getElementById('modalArtworkDescription').textContent = artDescriptions[index]; // Set description
+    showModal(modal, index); // Show the modal
 }
 
-// Shows artist modal with details
+// Function to show artist modal with details
 function showArtistModal(index) {
-    const modal = document.getElementById('artistModal');
-    if (!modal) return;
-    document.getElementById('modalArtistImage').src = artistImages[index];
-    document.getElementById('modalArtistName').textContent = artistNames[index];
-    document.getElementById('modalArtistLifespan').textContent = artistLifespans[index];
-    document.getElementById('modalArtistNationality').textContent = artistNationalities[index];
-    document.getElementById('modalArtistBio').textContent = artistBios[index];
-    showModal(modal);
+    const modal = document.getElementById('artistModal'); // Get artist modal element
+    if (!modal) return; // Exit if modal not found
+    document.getElementById('modalArtistImage').src = artistImages[index]; // Set modal image
+    document.getElementById('modalArtistName').textContent = artistNames[index]; // Set artist name
+    document.getElementById('modalArtistLifespan').textContent = artistLifespans[index]; // Set lifespan
+    document.getElementById('modalArtistNationality').textContent = artistNationalities[index]; // Set nationality
+    document.getElementById('modalArtistBio').textContent = artistBios[index]; // Set biography
+    showModal(modal); // Show the modal
 }
 
-// Displays modal and sets up close events
+// Function to display modal and set up close events
 function showModal(modal, index) {
-    const bsModal = new bootstrap.Modal(modal);
-    bsModal.show();
-    document.body.style.overflow = 'hidden';
-    const close = modal.querySelector('.modal-close');
-    const overlay = modal.querySelector('.modal-dialog');
-    close.onclick = () => closeModal(modal.id);
-    overlay.onclick = (e) => {
-        if (e.target === overlay) closeModal(modal.id);
+    const bsModal = new bootstrap.Modal(modal); // Create Bootstrap modal instance
+    bsModal.show(); // Show the modal
+    document.body.style.overflow = 'hidden'; // Disable body scrolling
+    const close = modal.querySelector('.modal-close'); // Get close button
+    const overlay = modal.querySelector('.modal-dialog'); // Get modal overlay
+    close.onclick = () => closeModal(modal.id); // Set close button click handler
+    overlay.onclick = (e) => { // Set overlay click handler
+        if (e.target === overlay) closeModal(modal.id); // Close if overlay clicked
     };
-    if (index !== undefined) {
-        const favoriteBtn = modal.querySelector('.btn-favorite');
-        favoriteBtn.onclick = () => toggleFavorite(index);
-        const shareBtn = modal.querySelector('.btn-share');
-        shareBtn.onclick = () => shareArtwork(index);
+    if (index !== undefined) { // If index is provided (for artwork modal)
+        const favoriteBtn = modal.querySelector('.btn-favorite'); // Get favorite button
+        favoriteBtn.onclick = () => toggleFavorite(index); // Set favorite button handler
+        const shareBtn = modal.querySelector('.btn-share'); // Get share button
+        shareBtn.onclick = () => shareArtwork(index); // Set share button handler
     }
-    updateFavoriteButtons();
+    updateFavoriteButtons(); // Update favorite button states
 }
 
-// Closes modal and resets body scroll
+// Function to close modal and reset body scroll
 function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (!modal) return;
-    const bsModal = bootstrap.Modal.getInstance(modal);
-    bsModal.hide();
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById(modalId); // Get modal element
+    if (!modal) return; // Exit if modal not found
+    const bsModal = bootstrap.Modal.getInstance(modal); // Get Bootstrap modal instance
+    bsModal.hide(); // Hide the modal
+    document.body.style.overflow = 'auto'; // Restore body scrolling
 }
 
-// Filters artworks by artist
+// Function to filter artworks by artist
 function filterArtworks(artist) {
-    const cards = document.querySelectorAll('.artwork-card');
-    cards.forEach(card => {
-        card.closest('.col-12').style.display = (artist === 'all' || card.dataset.artist === artist) ? 'block' : 'none';
+    const cards = document.querySelectorAll('.artwork-card'); // Get all artwork cards
+    cards.forEach(card => { // Loop through cards
+        card.closest('.col-12').style.display = (artist === 'all' || card.dataset.artist === artist) ? 'block' : 'none'; // Show/hide based on filter
     });
 }
 
-// Filters artists by era
+// Function to filter artists by era
 function filterArtistsByEra(era) {
-    const cards = document.querySelectorAll('#artist-container > div');
-    cards.forEach(card => {
-        card.style.display = (era === 'all' || card.dataset.era === era) ? 'block' : 'none';
+    const cards = document.querySelectorAll('#artist-container > div'); // Get all artist containers
+    cards.forEach(card => { // Loop through containers
+        card.style.display = (era === 'all' || card.dataset.era === era) ? 'block' : 'none'; // Show/hide based on era
     });
 }
 
-// Searches artworks by title or artist
-function searchArtworks(query) {
-    query = query.toLowerCase();
-    const cards = document.querySelectorAll('.artwork-card');
-    cards.forEach(card => {
-        const title = card.querySelector('.card-title').textContent.toLowerCase();
-        const artist = card.querySelector('.card-text').textContent.toLowerCase();
-        card.closest('.col-12').style.display = (title.includes(query) || artist.includes(query)) ? 'block' : 'none';
-    });
-}
-
-// Toggles mobile navigation menu
+// Function to toggle mobile navigation menu
 function toggleMobileNav() {
-    document.querySelector('.navbar-collapse').classList.toggle('show');
-    document.querySelector('.nav-toggler').classList.toggle('active');
+    document.querySelector('.navbar-collapse').classList.toggle('show'); // Toggle navbar visibility
+    document.querySelector('.nav-toggler').classList.toggle('active'); // Toggle toggler state
 }
 
-// Handles newsletter form submission
+// Function to handle newsletter form submission
 function handleNewsletterSubmit(event) {
-    event.preventDefault();
-    const email = event.target.querySelector('input[type="email"]').value;
-    alert('Thank you for subscribing! You will receive our updates at: ' + email);
-    event.target.reset();
+    event.preventDefault(); // Prevent form submission
+    const email = event.target.querySelector('input[type="email"]').value; // Get email input value
+    alert('Thank you for subscribing! You will receive our updates at: ' + email); // Show confirmation
+    event.target.reset(); // Reset form
 }
 
-// Toggles favorite status for an artwork
+// Function to toggle favorite status for an artwork
 function toggleFavorite(index) {
-    if (favorites.includes(index)) {
-        favorites.splice(favorites.indexOf(index), 1);
-    } else {
-        favorites.push(index);
+    if (favorites.includes(index)) { // If artwork is already favorited
+        favorites.splice(favorites.indexOf(index), 1); // Remove from favorites
+    } else { // If not favorited
+        favorites.push(index); // Add to favorites
     }
-    localStorage.setItem('artFavorites', JSON.stringify(favorites));
-    updateFavoriteButtons();
+    localStorage.setItem('artFavorites', JSON.stringify(favorites)); // Save to localStorage
+    updateFavoriteButtons(); // Update button states
 }
 
-// Updates favorite button states
+// Function to update favorite button states
 function updateFavoriteButtons() {
-    const buttons = document.querySelectorAll('.btn-favorite');
-    buttons.forEach((btn, i) => {
-        btn.innerHTML = `<i class="${favorites.includes(i) ? 'fas' : 'far'} fa-heart"></i> ${favorites.includes(i) ? 'Remove from' : 'Add to'} Favorites`;
+    const buttons = document.querySelectorAll('.btn-favorite'); // Get all favorite buttons
+    buttons.forEach((btn, i) => { // Loop through buttons
+        btn.innerHTML = `<i class="${favorites.includes(i) ? 'fas' : 'far'} fa-heart"></i> ${favorites.includes(i) ? 'Remove from' : 'Add to'} Favorites`; // Update button text/icon
     });
 }
 
-// Shares artwork via Web Share API or clipboard
+// Function to share artwork via Web Share API or clipboard
 function shareArtwork(index) {
-    if (navigator.share) {
-        navigator.share({
-            title: artTitles[index],
-            text: `Check out ${artTitles[index]} by ${artArtists[index]}`,
-            url: window.location.href
-        }).catch(console.error);
-    } else {
-        const input = document.createElement('input');
-        input.value = window.location.href;
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand('copy');
-        document.body.removeChild(input);
-        alert('Link copied to clipboard!');
+    if (navigator.share) { // If Web Share API is supported
+        navigator.share({ // Share artwork details
+            title: artTitles[index], // Share title
+            text: `Check out ${artTitles[index]} by ${artArtists[index]}`, // Share description
+            url: window.location.href // Share current URL
+        }).catch(console.error); // Log any errors
+    } else { // Fallback to clipboard
+        const input = document.createElement('input'); // Create temporary input
+        input.value = window.location.href; // Set input value to URL
+        document.body.appendChild(input); // Add to DOM
+        input.select(); // Select text
+        document.execCommand('copy'); // Copy to clipboard
+        document.body.removeChild(input); // Remove input
+        alert('Link copied to clipboard!'); // Show confirmation
     }
 }
 
-// Initializes page functionality on load
+// Initialize page functionality on load
 document.addEventListener('DOMContentLoaded', () => {
-    // Load content based on page
-    if (document.getElementById('gallery-container')) {
-        loadArtworks();
-        document.getElementById('artSearch').addEventListener('input', e => searchArtworks(e.target.value));
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                filterArtworks(btn.dataset.filter);
+    if (document.getElementById('gallery-container')) { // If on gallery page
+        loadArtworks(); // Load artworks
+        document.querySelectorAll('.filter-btn').forEach(btn => { // Loop through filter buttons
+            btn.addEventListener('click', () => { // Add click handler
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); // Remove active class
+                btn.classList.add('active'); // Add active class to clicked button
+                filterArtworks(btn.dataset.filter); // Apply filter
             });
         });
-    } else if (document.getElementById('artist-container')) {
-        loadArtists();
-        document.querySelectorAll('.era-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.era-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                filterArtistsByEra(tab.dataset.era);
+    } else if (document.getElementById('artist-container')) { // If on artists page
+        loadArtists(); // Load artists
+        document.querySelectorAll('.era-tab').forEach(tab => { // Loop through era tabs
+            tab.addEventListener('click', () => { // Add click handler
+                document.querySelectorAll('.era-tab').forEach(t => t.classList.remove('active')); // Remove active class
+                tab.classList.add('active'); // Add active class to clicked tab
+                filterArtistsByEra(tab.dataset.era); // Apply filter
             });
         });
-    } else if (document.getElementById('carouselItems')) {
-        loadFeaturedCarousel();
     }
 
-    // Initialize mobile navigation
-    const toggler = document.querySelector('.nav-toggler');
-    if (toggler) toggler.addEventListener('click', toggleMobileNav);
+    const toggler = document.querySelector('.nav-toggler'); // Get navbar toggler
+    if (toggler) toggler.addEventListener('click', toggleMobileNav); // Add click handler
 
-    // Initialize newsletter form
-    const form = document.querySelector('.newsletter-form');
-    if (form) form.addEventListener('submit', handleNewsletterSubmit);
+    const form = document.querySelector('.newsletter-form'); // Get newsletter form
+    if (form) form.addEventListener('submit', handleNewsletterSubmit); // Add submit handler
 
-    // Initialize favorites
-    updateFavoriteButtons();
+    updateFavoriteButtons(); // Initialize favorite buttons
 
-    // Close modals on Escape key
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
-            const modal = document.querySelector('.modal.show');
-            if (modal) closeModal(modal.id);
+    document.addEventListener('keydown', e => { // Add keydown handler
+        if (e.key === 'Escape') { // If Escape key pressed
+            const modal = document.querySelector('.modal.show'); // Get open modal
+            if (modal) closeModal(modal.id); // Close modal
         }
-    });
-});
-
-// Adds sticky navbar and fade-in animations on scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    navbar.classList.toggle('sticky', window.scrollY > 100);
-    document.querySelectorAll('.animate__animated:not(.animate__fadeIn)').forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('animate__fadeIn');
     });
 });

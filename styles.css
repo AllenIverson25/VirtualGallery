@@ -1,195 +1,449 @@
-/* Define CSS variables for colors and fonts */
+/* ========================================================================= */
+/* CSS Variables */
+/* ========================================================================= */
+/* Define reusable colors, fonts, and other properties for consistent styling */
 :root {
-    --primary-color: #a26632; /* Main brand color */
-    --accent-color: #e67e22; /* Highlight color */
-    --font-primary: 'Playfair Display', serif; /* Heading font */
-    --font-secondary: 'Montserrat', sans-serif; /* Body font */
+    --primary-color: #a26632; /* Rich bronze for brand identity */
+    --accent-color: #e67e22; /* Vibrant orange for highlights and hover effects */
+    --dark-color: #1a1a1a; /* Deep charcoal for footer and backgrounds */
+    --light-color: #f8f9fa; /* Soft off-white for main background */
+    --font-primary: 'Playfair Display', serif; /* Elegant serif for headings */
+    --font-secondary: 'Montserrat', sans-serif; /* Clean sans-serif for body text */
+    --transition: all 0.4s cubic-bezier(0.165,0.84,0.44,1); /* Smooth easing curve */
+    --box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    --border-radius: 10px; /* Consistent rounded corners */
+    --navbar-height: 60px; /* Fixed navbar height */
 }
 
-/* Set base font and background */
+/* ========================================================================= */
+/* Base Styles */
+/* ========================================================================= */
+/* Reset default margins/padding and set base font and background */
 body {
-    font-family: var(--font-secondary);
-    background: #f8f9fa;
+    font-family: var(--font-secondary); /* Apply Montserrat for body text */
+    background: var(--light-color) url('../imgs/texture-bg.png') repeat; /* Subtle canvas texture */
+    color: var(--dark-color); /* Default text color */
+    line-height: 1.6; /* Comfortable line spacing */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
-/* Customize Bootstrap navbar */
+/* Ensure images are responsive */
+img {
+    max-width: 100%; /* Prevent images from overflowing */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* ========================================================================= */
+/* Navbar Styling */
+/* ========================================================================= */
+/* Customize Bootstrap navbar to be compact and fixed at the top */
 .navbar {
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.9); /* Near-opaque black with blur */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    padding: 10px 0; /* Compact vertical padding */
+    height: var(--navbar-height); /* Fixed height */
+    z-index: 1000; /* Ensure navbar stays above all content */
 }
 .navbar.sticky {
-    padding: 5px 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Subtle shadow when sticky */
 }
 .site-logo {
-    font-family: var(--font-primary);
-    font-weight: 700;
-    color: var(--accent-color) !important;
+    font-family: var(--font-primary); /* Use Playfair Display for logo */
+    font-size: 1.8rem; /* Smaller logo for compact navbar */
+    font-weight: 800; /* Bold for impact */
+    color: var(--accent-color) !important; /* Vibrant orange */
+    text-transform: uppercase; /* Uppercase for sophistication */
+    letter-spacing: 2px; /* Spaced-out letters */
+    line-height: 1; /* Align with navbar height */
+}
+.site-logo:hover {
+    color: #fff !important; /* White on hover */
+}
+.nav-item {
+    margin-left: 25px; /* Space out navigation links */
 }
 .nav-link {
-    position: relative;
+    font-family: var(--font-secondary); /* Montserrat for links */
+    font-weight: 600; /* Semi-bold for clarity */
+    color: #fff !important; /* White links */
+    padding: 8px 15px; /* Compact padding */
+    text-transform: uppercase; /* Uppercase for consistency */
+    letter-spacing: 1px; /* Slight letter spacing */
+    font-size: 0.9rem; /* Smaller for compact navbar */
 }
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-color);
-    transition: width 0.4s;
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-color) !important; /* Orange on hover/active */
 }
-.nav-link:hover::after, .nav-link.active::after {
-    width: 100%;
-}
-.nav-link.active {
-    color: var(--accent-color) !important;
+.navbar-toggler {
+    border: none; /* Remove default border */
 }
 
-/* Hero section with video background */
+/* ========================================================================= */
+/* Header Styling */
+/* ========================================================================= */
+/* Style hero section with video background, starting below navbar */
 .hero-video-container {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    position: relative; /* For positioning video and overlay */
+    height: calc(100vh - var(--navbar-height)); /* Full height minus navbar */
+    margin-top: var(--navbar-height); /* Start below navbar */
+    display: flex; /* Center content */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    overflow: hidden; /* Hide overflow */
 }
 .hero-video-container .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 1;
+    position: absolute; /* Cover entire hero */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(162,102,50,0.3)); /* Dark with bronze tint */
+    z-index: 1; /* Above video, below content */
 }
 .hero-video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    position: absolute; /* Cover entire hero */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Scale to cover */
 }
 .hero-content {
-    position: relative;
-    z-index: 2;
+    position: relative; /* Above overlay */
+    z-index: 2; /* Ensure visibility */
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Text shadow for readability */
+}
+.hero-content h1 {
+    font-family: var(--font-primary); /* Playfair Display for heading */
+    font-size: 4rem; /* Large, impactful size */
+    font-weight: 900; /* Extra bold */
+    letter-spacing: 3px; /* Spaced-out letters */
+}
+.hero-content p {
+    font-size: 1.5rem; /* Larger subtitle */
+    font-weight: 300; /* Light for contrast */
 }
 
-/* Featured carousel item */
-.featured-item {
-    position: relative;
+/* Style page title header, starting below navbar */
+.page-title-area {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('../imgs/page-header-bg.jpg') center/cover; /* Darkened image */
+    margin-top: var(--navbar-height); /* Start below navbar */
+    padding: 80px 0; /* Generous padding */
 }
-.featured-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    transform: translateY(100px);
-    transition: transform 0.4s;
+.page-title-area h1 {
+    font-family: var(--font-primary); /* Playfair Display */
+    font-weight: 800; /* Bold */
+    letter-spacing: 2px; /* Spaced-out letters */
 }
-.featured-item:hover .featured-info {
-    transform: translateY(0);
+.breadcrumb-item a, .breadcrumb-item.active {
+    color: #fff; /* White text */
+    text-decoration: none; /* No underline */
 }
-.featured-link i {
-    margin-left: 10px;
-    transition: transform 0.4s;
-}
-.featured-link:hover i {
-    transform: translateX(5px);
+.breadcrumb-item.active {
+    opacity: 0.8; /* Slightly faded */
 }
 
-/* About section images */
+/* ========================================================================= */
+/* Button Styling */
+/* ========================================================================= */
+/* Customize buttons to feel unique, overriding Bootstrap defaults */
+.btn-primary, .btn-outline-primary, .btn-subscribe, .filter-btn, .era-tab {
+    font-family: var(--font-secondary); /* Montserrat for buttons */
+    font-weight: 600; /* Semi-bold */
+    text-transform: uppercase; /* Uppercase for elegance */
+    letter-spacing: 1.5px; /* Spaced-out letters */
+    border-radius: 30px; /* Rounded edges */
+    padding: 10px 25px; /* Compact padding */
+    transition: var(--transition); /* Smooth hover effects */
+}
+.btn-primary {
+    background: var(--primary-color); /* Bronze background */
+    border-color: var(--primary-color); /* Bronze border */
+    color: #fff; /* White text */
+}
+.btn-primary:hover {
+    background: var(--accent-color); /* Orange on hover */
+    border-color: var(--accent-color); /* Orange border */
+    box-shadow: 0 8px 20px rgba(162,102,50,0.4); /* Subtle shadow */
+}
+.btn-outline-primary {
+    border-color: var(--primary-color); /* Bronze border */
+    color: var(--primary-color); /* Bronze text */
+}
+.btn-outline-primary:hover, .filter-btn:hover, .era-tab:hover, .filter-btn.active, .era-tab.active {
+    background: var(--primary-color); /* Bronze background */
+    border-color: var(--primary-color); /* Bronze border */
+    color: #fff; /* White text */
+}
+.btn-subscribe {
+    background: var(--primary-color); /* Bronze background */
+    border: none; /* No border */
+    color: #fff; /* White text */
+    position: absolute; /* Position inside input */
+    top: 4px; /* Align with input */
+    right: 4px; /* Align with input */
+}
+.btn-subscribe:hover {
+    background: var(--accent-color); /* Orange on hover */
+}
+
+/* ========================================================================= */
+/* Card Styling */
+/* ========================================================================= */
+/* Style cards for artworks and artists to be proportional */
+.artwork-card, .artist-card {
+    border: none; /* Remove default border */
+    border-radius: var(--border-radius); /* Rounded corners */
+    background: #fff; /* White background */
+    box-shadow: var(--box-shadow); /* Subсию: Subtle shadow */
+    height: 100%; /* Ensure cards fill container */
+    display: flex; /* Flex layout for consistent height */
+    flex-direction: column; /* Stack content vertically */
+}
+.card-img-wrapper {
+    height: 200px; /* Fixed height for images */
+    overflow: hidden; /* Hide overflow */
+}
+.card-img-top {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Scale to cover, maintaining aspect ratio */
+}
+.card-body {
+    padding: 20px; /* Consistent padding */
+    flex-grow: 1; /* Grow to fill space */
+    display: flex; /* Flex layout for content */
+    flex-direction: column; /* Stack content vertically */
+}
+.card-title {
+    font-family: var(--font-primary); /* Playfair Display for titles */
+    font-size: 1.4rem; /* Consistent size */
+    font-weight: 700; /* Bold */
+    margin-bottom: 10px; /* Space below title */
+}
+.card-text {
+    font-size: 1rem; /* Consistent size */
+    color: #555; /* Softer gray */
+    flex-grow: 1; /* Grow to push button down */
+    margin-bottom: 15px; /* Space above button */
+}
+.card-body .btn {
+    margin-top: auto; /* Push button to bottom */
+}
+
+/* ========================================================================= */
+/* Section Styling */
+/* ========================================================================= */
+/* Style sections with subtle background overlay */
+section {
+    padding: 80px 0; /* Generous vertical padding */
+    position: relative; /* For pseudo-element */
+}
+section::before {
+    content: ''; /* Pseudo-element for overlay */
+    position: absolute; /* Cover section */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background: rgba(162,102,50,0.05); /* Faint bronze tint */
+    z-index: -1; /* Behind content */
+}
+.about-section, .newsletter-section {
+    background: #fff; /* White background for contrast */
+}
+
+/* ========================================================================= */
+/* About Section */
+/* ========================================================================= */
+/* Style about section with custom image effects */
 .about-image-wrapper {
-    position: relative;
-    height: 500px;
+    position: relative; /* For positioning images */
+    height: 500px; /* Fixed height */
 }
 .about-image-wrapper .main-image {
-    width: 80%;
-    height: 100%;
-    object-fit: cover;
+    width: 80%; /* Slightly narrower */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Scale to cover */
+    border-radius: var(--border-radius); /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Stronger shadow */
 }
 .floating-image {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    background: #fff;
-    padding: 10px;
+    position: absolute; /* Position over main image */
+    width: 200px; /* Fixed size */
+    height: 200px; /* Square aspect */
+    object-fit: cover; /* Scale to cover */
+    border-radius: var(--border-radius); /* Rounded corners */
+    background: #fff; /* White background */
+    padding: 8px; /* Inner padding */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Subtle shadow */
 }
 .floating-image.top {
-    top: -30px;
-    right: 0;
+    top: -30px; /* Position above */
+    right: 0; /* Align right */
 }
 .floating-image.bottom {
-    bottom: -30px;
-    right: 80px;
+    bottom: -30px; /* Position below */
+    right: 80px; /* Offset from right */
 }
 .shape-1, .shape-2 {
-    position: absolute;
-    border-radius: 50%;
+    position: absolute; /* Position shapes */
+    border-radius: 50%; /* Circular shapes */
+    opacity: 0.7; /* Slightly transparent */
 }
 .shape-1 {
-    width: 200px;
-    height: 200px;
-    background: rgba(162,102,50,0.1);
-    top: -60px;
-    left: -60px;
+    width: 200px; /* Larger shape */
+    height: 200px; /* Square aspect */
+    background: radial-gradient(circle, rgba(162,102,50,0.2), transparent); /* Bronze gradient */
+    top: -60px; /* Position above */
+    left: -60px; /* Position left */
 }
 .shape-2 {
-    width: 150px;
-    height: 150px;
-    background: rgba(230,126,34,0.1);
-    bottom: -40px;
-    right: -40px;
+    width: 150px; /* Smaller shape */
+    height: 150px; /* Square aspect */
+    background: radial-gradient(circle, rgba(230,126,34,0.2), transparent); /* Orange gradient */
+    bottom: -40px; /* Position below */
+    right: -40px; /* Position right */
 }
 .subtitle {
-    color: var(--primary-color);
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-family: var(--font-secondary); /* Montserrat for subtitle */
+    color: var(--primary-color); /* Bronze color */
+    font-weight: 700; /* Bold */
+    letter-spacing: 2px; /* Spaced-out letters */
+    text-transform: uppercase; /* Uppercase */
 }
 .about-features i {
-    color: var(--accent-color);
+    color: var(--accent-color); /* Orange icons */
+    font-size: 1.5rem; /* Larger icons */
 }
 
-/* Page title background */
-.page-title-area {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../imgs/page-header-bg.jpg') center/cover;
+/* ========================================================================= */
+/* Newsletter Section */
+/* ========================================================================= */
+/* Style newsletter section with custom form */
+.newsletter-inner {
+    background: #fff; /* White background */
+    border-radius: var(--border-radius); /* Rounded corners */
+    box-shadow: var(--box-shadow); /* Subtle shadow */
+}
+.newsletter-form input {
+    border-radius: 30px; /* Rounded input */
+    border: 1px solid #ddd; /* Light border */
+    padding: 12px 20px; /* Comfortable padding */
+}
+.newsletter-form input:focus {
+    border-color: var(--primary-color); /* Bronze border */
+    box-shadow: 0 0 10px rgba(162,102,50,0.2); /* Subtle glow */
 }
 
-/* Customize Bootstrap modal */
+/* ========================================================================= */
+/* Footer Styling */
+/* ========================================================================= */
+/* Style footer with hover effects */
+.site-footer {
+    background: var(--dark-color); /* Deep charcoal */
+}
+.footer-widget h4 {
+    font-family: var(--font-primary); /* Playfair Display */
+    font-weight: 700; /* Bold */
+    position: relative; /* For underline */
+    padding-bottom: 10px; /* Space for underline */
+}
+.footer-widget h4::after {
+    content: ''; /* Pseudo-element for underline */
+    position: absolute; /* Position below */
+    bottom: 0; /* Align at bottom */
+    left: 0; /* Start from left */
+    width: 50px; /* Fixed width */
+    height: 2px; /* Thin line */
+    background: var(--primary-color); /* Bronze underline */
+}
+.social-links .btn:hover {
+    background: var(--primary-color); /* Bronze background */
+    border-color: var(--primary-color); /* Bronze border */
+}
+.footer-links a:hover, .contact-info i {
+    color: var(--accent-color); /* Orange on hover */
+}
+
+/* ========================================================================= */
+/* Modal Styling */
+/* ========================================================================= */
+/* Customize modals with white background */
 .modal-content {
-    transform: translateY(-20px);
-    transition: transform 0.3s, opacity 0.3s;
+    background: #fff; /* Pure white background */
+    border-radius: var(--border-radius); /* Rounded corners */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3); /* Deep shadow */
 }
-.modal.show .modal-content {
-    transform: translateY(0);
+.modal-dialog {
+    background: rgba(0,0,0,0.8); /* Dark overlay */
 }
-.modal-overlay {
-    background: rgba(0,0,0,0.8);
+.btn-close {
+    filter: invert(1); /* White close button */
+    opacity: 0.7; /* Slightly transparent */
+}
+.btn-close:hover {
+    opacity: 1; /* Fully opaque on hover */
+}
+.btn-favorite, .btn-share {
+    border-radius: 30px; /* Rounded edges */
+    padding: 10px 20px; /* Compact padding */
+}
+.btn-favorite:hover, .btn-share:hover {
+    background: var(--primary-color); /* Bronze background */
+    color: #fff; /* White text */
 }
 
-/* Virtual tour iframe */
+/* ========================================================================= */
+/* Virtual Tour Styling */
+/* ========================================================================= */
+/* Style virtual tour iframe to start below navbar */
 .virtual-tour-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
+    margin-top: var(--navbar-height); /* Start below navbar */
+    height: calc(100vh - var(--navbar-height)); /* Full height minus navbar */
 }
 .virtual-tour-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    border: none; /* No border */
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .virtual-tour-container {
-        height: calc(100vh - 56px);
-        top: 56px;
+/* ========================================================================= */
+/* Responsive Adjustments */
+/* ========================================================================= */
+/* Adjust styles for smaller screens */
+@media (max-width: 991px) {
+    .nav-item {
+        margin-left: 0; /* Remove spacing for mobile menu */
+        margin-bottom: 8px; /* Space items vertically */
     }
+    .navbar-nav {
+        padding: 15px; /* Padding for mobile menu */
+        background: rgba(0,0,0,0.95); /* Darker background */
+    }
+}
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem; /* Smaller heading */
+    }
+    .hero-content p {
+        font-size: 1.2rem; /* Smaller subtitle */
+    }
+    .about-image-wrapper {
+        height: 300px; /* Shorter image area */
+    }
+    .floating-image {
+        width: 150px; /* Smaller images */
+        height: 150px; /* Square aspect */
+    }
+}
+
+/* ========================================================================= */
+/* Accessibility */
+/* ========================================================================= */
+/* Add focus styles for accessibility */
+.btn:focus, .filter-btn:focus, .era-tab:focus, .btn-close:focus {
+    outline: 3px solid var(--accent-color); /* Orange outline */
+    outline-offset: 3px; /* Space from element */
 }

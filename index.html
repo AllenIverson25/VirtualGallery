@@ -12,71 +12,44 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Animate.css for fade-in effects -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Google Fonts for Playfair Display and Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar using Bootstrap's nav component -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand site-logo" href="index.html">Artistry</a>
-                <button class="navbar-toggler nav-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto site-menu">
-                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="artists.html">Artists</a></li>
-                        <li class="nav-item"><a class="nav-link" href="virtual.html">3D Tour</a></li>
-                    </ul>
-                </div>
+    <!-- Navbar positioned at the top, fixed and compact -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand site-logo" href="index.html">Artistry</a>
+            <button class="navbar-toggler nav-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto site-menu">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="artists.html">Artists</a></li>
+                    <li class="nav-item"><a class="nav-link" href="virtual.html">3D Tour</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- Hero section with video background -->
-    <section class="hero-video-container">
+    <!-- Hero section, fully visible below navbar -->
+    <header class="hero-video-container">
         <div class="overlay"></div>
         <video autoplay muted loop id="heroVideo">
             <source src="IAG Cargo _ The National Gallery teaser.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="hero-content animate__animated animate__fadeIn text-center text-white">
+        <div class="hero-content text-center text-white">
             <h1 class="display-1 fw-bold">Welcome to the Virtual Art Gallery</h1>
             <p class="lead">Where imagination meets canvas in perfect harmony</p>
             <div class="hero-buttons d-flex justify-content-center gap-3">
                 <a href="gallery.html" class="btn btn-primary btn-lg">Explore Collection</a>
-                <a href="virtual.html" class="btn btn-outline-light btn-lg btn-secondary">Virtual Tour</a>
+                <a href="virtual.html" class="btn btn-primary btn-lg">Virtual Tour</a>
             </div>
         </div>
-    </section>
-
-    <!-- Featured section using Bootstrap carousel -->
-    <section class="featured-section py-5">
-        <div class="container">
-            <div class="section-header text-center mb-5">
-                <h2 class="display-4">Featured Masterpieces</h2>
-                <p class="lead">Experience our curated selection of timeless artwork</p>
-            </div>
-            <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner" id="carouselItems">
-                    <!-- Carousel items loaded by JavaScript -->
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>
+    </header>
 
     <!-- About section with Bootstrap grid -->
     <section class="about-section py-5 bg-white">
@@ -99,7 +72,7 @@
                 <div class="col-lg-6">
                     <div class="about-image-wrapper">
                         <img src="imgs/interior.png" alt="Gallery Interior" class="main-image rounded shadow">
-                        <img src="imgs/preview.png" alt="Art Preview" class="floating-image top rounded shadow">
+                        <img src="imgs/art.png" alt="Art Preview" class="floating-image top rounded shadow">
                         <img src="imgs/artistworking.png" alt="Artist at Work" class="floating-image bottom rounded shadow">
                         <div class="shape-1"></div>
                         <div class="shape-2"></div>
@@ -182,7 +155,7 @@
                 </div>
             </div>
             <div class="copyright-bar mt-4 text-center border-top pt-3">
-                <p>&copy; 2025 Artistry. All rights reserved.</p>
+                <p>© 2025 Artistry. All rights reserved.</p>
             </div>
         </div>
     </footer>

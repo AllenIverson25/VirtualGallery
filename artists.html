@@ -12,34 +12,30 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Animate.css for fade-in effects -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Google Fonts for Playfair Display and Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="artists-page">
-    <!-- Navbar using Bootstrap's nav component -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand site-logo" href="index.html">Artistry</a>
-                <button class="navbar-toggler nav-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto site-menu">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="artists.html">Artists</a></li>
-                        <li class="nav-item"><a class="nav-link" href="virtual.html">3D Tour</a></li>
-                    </ul>
-                </div>
+    <!-- Navbar positioned at the top, fixed and compact -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand site-logo" href="index.html">Artistry</a>
+            <button class="navbar-toggler nav-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto site-menu">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="artists.html">Artists</a></li>
+                    <li class="nav-item"><a class="nav-link" href="virtual.html">3D Tour</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- Page title with breadcrumb -->
-    <div class="page-title-area py-5 text-center text-white">
+    <!-- Page title header, fully visible below navbar -->
+    <header class="page-title-area py-5 text-center text-white">
         <div class="container">
             <h1 class="display-4">Featured Artists</h1>
             <nav aria-label="breadcrumb">
@@ -49,7 +45,7 @@
                 </ol>
             </nav>
         </div>
-    </div>
+    </header>
 
     <!-- Artist era filter buttons -->
     <section class="artists-filter-section py-5">
@@ -65,7 +61,7 @@
         </div>
     </section>
 
-    <!-- Artists grid loaded by JavaScript -->
+    <!-- Artists grid with proportional cards -->
     <section class="artists-grid-section py-5">
         <div class="container">
             <div class="row" id="artist-container">
@@ -74,8 +70,8 @@
         </div>
     </section>
 
-    <!-- Artist modal using Bootstrap modal -->
-    <div class="modal fade artist-modal" id="artistModal" tabindex="-1" aria-labelledby="artistModalLabel" aria-hidden="true">
+    <!-- Artist modal with white background -->
+    <div class="modal fade artist-modal bg-white" id="artistModal" tabindex="-1" aria-labelledby="artistModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-content">
             <div class="modal-body">
                 <button type="button" class="btn-close modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -84,7 +80,6 @@
                         <div class="artist-image">
                             <img src="" alt="" id="modalArtistImage" class="img-fluid rounded">
                             <div class="artist-social mt-3 d-flex gap-2">
-                                <a href="#" class="btn btn-outline-dark" aria-label="Wikipedia"><i class="fab fa-wikipedia-w"></i></a>
                                 <a href="#" class="btn btn-outline-dark" aria-label="Museum page"><i class="fas fa-university"></i></a>
                             </div>
                         </div>
@@ -161,7 +156,7 @@
                 </div>
             </div>
             <div class="copyright-bar mt-4 text-center border-top pt-3">
-                <p>&copy; 2025 Artistry. All rights reserved.</p>
+                <p>© 2025 Artistry. All rights reserved.</p>
             </div>
         </div>
     </footer>
