@@ -21,7 +21,6 @@
 /* Reset default margins/padding and set base font and background */
 body {
     font-family: var(--font-secondary); /* Apply Montserrat for body text */
-    background: var(--light-color) url('../imgs/texture-bg.png') repeat; /* Subtle canvas texture */
     color: var(--dark-color); /* Default text color */
     line-height: 1.6; /* Comfortable line spacing */
     margin: 0; /* Remove default margin */
@@ -157,21 +156,43 @@ img {
     padding: 10px 25px;
     transition: var(--transition);
 }
+
 .btn-primary {
     background: var(--primary-color);
     border-color: var(--primary-color);
     color: #fff;
 }
+
 .btn-primary:hover {
     background: var(--accent-color);
     border-color: var(--accent-color);
     box-shadow: 0 8px 20px rgba(162,102,50,0.4);
 }
+
 .btn-outline-primary {
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
-.btn-outline-primary:hover {
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Override Bootstrap's default active state */
+.btn-check:checked + .btn-outline-primary, 
+.btn-check:active + .btn-outline-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Filter buttons active state */
+.filter-btn.active,
+.era-tab.active {
     background: var(--primary-color);
     border-color: var(--primary-color);
     color: #fff;

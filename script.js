@@ -235,16 +235,6 @@ function handleNewsletterSubmit(event) {
     event.target.reset(); // Reset form
 }
 
-// Function to toggle favorite status for an artwork
-function toggleFavorite(index) {
-    if (favorites.includes(index)) { // If artwork is already favorited
-        favorites.splice(favorites.indexOf(index), 1); // Remove from favorites
-    } else { // If not favorited
-        favorites.push(index); // Add to favorites
-    }
-    localStorage.setItem('artFavorites', JSON.stringify(favorites)); // Save to localStorage
-    updateFavoriteButtons(); // Update button states
-}
 
 // Function to update favorite button states
 function updateFavoriteButtons() {
