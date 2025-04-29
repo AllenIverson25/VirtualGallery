@@ -221,11 +221,7 @@ function filterArtistsByEra(era) {
     });
 }
 
-// Function to toggle mobile navigation menu
-function toggleMobileNav() {
-    document.querySelector('.navbar-collapse').classList.toggle('show'); // Toggle navbar visibility
-    document.querySelector('.nav-toggler').classList.toggle('active'); // Toggle toggler state
-}
+
 
 // Function to handle newsletter form submission
 function handleNewsletterSubmit(event) {

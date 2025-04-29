@@ -25,6 +25,7 @@ body {
     line-height: 1.6; /* Comfortable line spacing */
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 /* Ensure images are responsive */
@@ -126,7 +127,7 @@ img {
 
 /* Style page title header, starting below navbar */
 .page-title-area {
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('../imgs/page-header-bg.jpg') center/cover; /* Darkened image */
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), center/cover; /* Darkened image */
     margin-top: var(--navbar-height); /* Start below navbar */
     padding: 80px 0; /* Generous padding */
 }
@@ -182,13 +183,7 @@ img {
     color: #fff;
 }
 
-/* Override Bootstrap's default active state */
-.btn-check:checked + .btn-outline-primary, 
-.btn-check:active + .btn-outline-primary {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    color: #fff;
-}
+
 
 /* Filter buttons active state */
 .filter-btn.active,
@@ -205,7 +200,7 @@ img {
 .newsletter-inner {
     background: #fff;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--primary-color);
 }
 
 .newsletter-form .input-group {
@@ -224,7 +219,6 @@ img {
 }
 
 .newsletter-form .form-control:focus {
-    border-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(162,102,50,0.2);
 }
 
