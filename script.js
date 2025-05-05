@@ -232,13 +232,6 @@ function handleNewsletterSubmit(event) {
 }
 
 
-// Function to update favorite button states
-function updateFavoriteButtons() {
-    const buttons = document.querySelectorAll('.btn-favorite'); // Get all favorite buttons
-    buttons.forEach((btn, i) => { // Loop through buttons
-        btn.innerHTML = `<i class="${favorites.includes(i) ? 'fas' : 'far'} fa-heart"></i> ${favorites.includes(i) ? 'Remove from' : 'Add to'} Favorites`; // Update button text/icon
-    });
-}
 
 
 // Initialize page functionality on load
